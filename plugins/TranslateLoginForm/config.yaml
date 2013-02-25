@@ -1,0 +1,13 @@
+name: TranslateLoginForm
+callbacks:
+    init_request: >
+            sub {
+                my $app = MT->instance;
+                if ( ref( $app ) =~ /^MT::App::/ ) {
+                    if ( my $lang = $app->param( '__lang' ) ) {
+                        $app->set_language( $lang );
+                    }
+                }
+                $app;
+            }
+
